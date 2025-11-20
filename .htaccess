@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /Latihan_CI_CRUD_SE24P/
+
+    # Block direct access ke folder system
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+    # Kalau file/folder beneran ada, jangan di rewrite
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Arahkan semua request ke index.php
+    RewriteRule ^(.*)$ index.php/$1 [L]
+
+</IfModule>
