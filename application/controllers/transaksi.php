@@ -34,6 +34,19 @@ class Transaksi extends CI_Controller {
         redirect('transaksi');
     }
 
+    public function batal()
+    {
+        $session_cart = $this->session->userdata('session_cart');
+
+        if ($session_cart) {
+            $this->db->where('session_cart', $session_cart);
+            $this->db->delete('transaksi_detail');
+        }
+
+        $this->session->set_flashdata('success', 'Keranjang berhasil dikosongkan.');
+        redirect('transaksi');
+    }
+
     function selesai_belanja()
     {
         $nama_customer = $this->input->post('nama_customer');

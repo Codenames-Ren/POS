@@ -70,12 +70,19 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
+
+                            <a href="<?= site_url('transaksi/batal'); ?>" 
+                            class="btn btn-danger btn-sm" 
+                            style="margin-right: 10px;">
+                                Batal
+                            </a>
+
                             <button type="submit" class="btn btn-success btn-sm">
                                 Checkout
                             </button>
+
                         </div>
                     </div>
-
                 </form>
 
             </div>
