@@ -96,7 +96,9 @@
                             <tr>
                                 <td><?= $no++; ?></td>
                                 <td><?= date('d/m/Y', strtotime($r->tanggal_transaksi)); ?></td>
-                                <td><?= $r->nama_customer; ?></td>
+                                <td><a href="<?= base_url('transaksi/laporan_detail/' . $r->transaksi_id) ?>">
+                                    <?= $r->nama_customer ?>
+                                </a></td>
                                 <td><?= $r->nama_lengkap; ?></td>
                                 <td class="text-right">Rp <?= number_format($r->total, 0, ',', '.'); ?></td>
                             </tr>

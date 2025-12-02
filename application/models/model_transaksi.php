@@ -89,6 +89,28 @@ class Model_transaksi extends CI_Model
         return $this->db->get();
     }
 
+    public function laporan_detail($id_transaksi)
+    {
+        $this->db->select("
+            t.transaksi_id,
+            t.tanggal_transaksi,
+            t.nama_customer,
+            o.nama_lengkap,
+            b.nama_barang,
+            td.qty,
+            td.harga,
+            (td.qty * td.harga) AS subtotal
+        ");
+        $this->db->from('transaksi t');
+        $this->db->join('transaksi_detail td', 't.transaksi_id = td.transaksi_id');
+        $this->db->join('barang b', 'b.barang_id = td.barang_id', 'left');
+        $this->db->join('operator o', 'o.id_operator = t.operator_id', 'left');
+        $this->db->where('t.transaksi_id', $id_transaksi);
+
+        return $this->db->get();
+    }
+
+
     function laporan_periode($tanggal1, $tanggal2)
     {
         $this->db->select('
